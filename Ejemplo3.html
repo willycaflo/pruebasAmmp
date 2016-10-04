@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/ammap.css" type="text/css" media="all" />
+	<style type="text/css">
+		.amcharts-map-line {
+            stroke-dasharray: 2px 2px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            -webkit-animation: am-moving-dashes 3s linear infinite;
+            animation: am-moving-dashes 3s linear infinite;
+        }
+
+        @-webkit-keyframes am-moving-dashes {
+            100% {
+                stroke-dashoffset: -30px;
+            }
+        }
+        @keyframes am-moving-dashes {
+            100% {
+                stroke-dashoffset: -30px;
+            }
+        }
+        .amcharts-map-image-london {
+            -webkit-animation: am-pulsating 1s ease-out infinite;
+            animation: am-pulsating 1s ease-out infinite;
+        }
+        @-webkit-keyframes am-pulsating {
+            0% {
+                transform: scale(0);
+                opacity:1;
+            }
+            100% {
+                transform: scale(4);
+                opacity:0;
+            }
+        }
+        @keyframes am-pulsating {
+            0% {
+                transform: scale(0);
+                opacity:1;
+            }
+            100% {
+                transform: scale(4);
+                opacity:0;
+            }
+        }
+
+
+        .amcharts-map-area {
+            -webkit-transition: all .3s .3s ease-out;
+            transition: all .3s .3s ease-out;
+        }
+        .amcharts-map-area:hover {
+            fill: #93c765;
+            stroke: #93c765;
+            -webkit-transition: all .3s ease-out;
+            transition: all .3s ease-out;
+        }
+	</style>
+	<script src="../ammap_3.20.3.free/ammap/ammap.js"></script>
+	<script src="../ammap_3.20.3.free/ammap/maps/js/mexicoLow.js"></script>
+	<script type="text/javascript">
+		var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+		var planeSVG = "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47";
+		
+		var camionSVG = "m 640,128 q 0,52 -38,90 -38,38 -90,38 -52,0 -90,-38 -38,-38 -38,-900,-52 38,-90 38,-38 90,-38 52,0 90,38 38,38 38,90 z M 256,640 H 640 V896 H 482 q -13,0 -22,-9 L 265,692 q -9,-9 -9,-22 V 640 z M 1536,128 q0,52 -38,90 -38,38 -90,38 -52,0 -90,-38 -38,-38 -38,-90 0,-52 38,-9038,-38 90,-38 52,0 90,38 38,38 38,90 z m 256,1088 V 192 q 0,-15 -4,-26.5-4,-11.5 -13.5,-18.5 -9.5,-7 -16.5,-11.5 -7,-4.5 -23.5,-6 -16.5,-1.5-22.5,-2 -6,-0.5 -25.5,0 -19.5,0.5 -22.5,0.5 0,-106 -75,-181 -75,-75-181,-75 -106,0 -181,75 -75,75 -75,181 H 768 q 0,-106 -75,-181 -75,-75-181,-75 -106,0 -181,75 -75,75 -75,181 h -64 q -3,0 -22.5,-0.5-19.5,-0.5 -25.5,0 -6,0.5 -22.5,2 Q 105,131 98,135.5 91,140 81.5,14772,154 68,165.5 64,177 64,192 q 0,26 19,45 19,19 45,19 v 320 q 0,8-0.5,35 -0.5,27 0,38 0.5,11 2.5,34.5 2,23.5 6.5,37 4.5,13.5 14,30.59.5,17 22.5,30 l 198,198 q 19,19 50.5,32 31.5,13 58.5,13 h 160 v 192 q0,26 19,45 19,19 45,19 h 1024 q 26,0 45,-19 19,-19 19,-45 z";
+
+		AmCharts.makeChart( "chartdiv", {
+			"type": "map",
+			"addClassNames":true,
+			"dataProvider": {
+				"map": "mexicoLow",
+				//"getAreasFromMap": true,
+			    "lines": [
+			    	{
+				    	"id": "line1",
+				      	"arc": -0.85,
+				      	"alpha": 0.9,
+				      	"latitudes": [ 19.4307795, 19.4967099 ],
+				      	"longitudes": [ -99.1679873, -101.603335000000021]
+			    	},
+			    	{
+				    	"id": "line2",
+				      	"arc": -0.85,
+				      	"alpha": 0.9,
+				      	"latitudes": [20.9681469 ,19.4307795 ],
+				      	"longitudes": [-89.62987240000001 ,-99.1679873]
+			    	},
+			    	{
+				    	"id": "line3",
+				      	"arc": -0.85,
+				      	"alpha": 0.9,
+				      	"latitudes": [ 19.4307795, 31.88754350000001 ],
+				      	"longitudes": [ -99.1679873, -116.59194839999998]
+			    	},
+			    	{
+				    	"id": "line4",
+				      	"arc": -0.85,
+				      	"alpha": 0.9,
+				      	"latitudes": [ 19.4307795, 25.6866142 ],
+				      	"longitudes": [ -99.1679873, -100.3161126]
+			    	},
+			    ],
+				"images":[
+					{
+						"latitude": 19.4307795,
+					    "longitude": -99.1679873,
+					    //"type": "circle",
+					    "title": "Sky Angel",
+					    "svgPath": targetSVG,
+					    "color": "#0782AB"
+					},
+					{
+						"latitude": 19.4967099,
+					    "longitude": -101.603335000000021,
+					    //"type": "circle",
+					    "title": "Patzcuaro Mich.",
+					    "svgPath": targetSVG,
+					    "color": "#0782AB"
+					},
+					{
+						"latitude": 20.9681469,
+					    "longitude": -89.62987240000001,
+					    //"type": "circle",
+					    "title": "Merida Yuc.",
+					    "svgPath": targetSVG,
+					    "color": "#0782AB"
+					},
+					{
+						"latitude": 31.88754350000001,
+					    "longitude": -116.59194839999998,
+					    //"type": "circle",
+					    "title": "Ensenada, B.C.",
+					    "svgPath": targetSVG,
+					    "color": "#0782AB"
+					},
+					{
+						"latitude": 25.6866142,
+					    "longitude": -100.3161126,
+					    //"type": "circle",
+					    "title": "Monterrey N.L.",
+					    "svgPath": targetSVG,
+					    "color": "#0782AB"
+					},
+					{
+				    	"id": "plane1",
+				      	"svgPath": camionSVG,
+				      	//"type": "circle",
+				      	"positionOnLine": 0,
+				      	"color": "#585869",
+				      	"longitude": -500,
+				      	"latitude": -500,
+				      	"flipDirection": true,
+				      	"loop": true,
+				      	"scale": 0.03,
+				      	"positionScale": 1.8
+				    },
+				    {
+				    	"id": "plane2",
+				      	"svgPath": planeSVG,
+				      	"positionOnLine": 0,
+				      	"color": "#585869",
+				      	"longitude": -500,
+				      	"latitude": -500,
+				      	"flipDirection": true,
+				      	"loop": true,
+				      	"scale": 0.03,
+				      	"positionScale": 1.8
+				    },
+				    {
+				    	"id": "plane3",
+				      	"svgPath": planeSVG,
+				      	"positionOnLine": 0,
+				      	"color": "#585869",
+				      	"longitude": -500,
+				      	"latitude": -500,
+				      	"flipDirection": true,
+				      	"loop": true,
+				      	"scale": 0.03,
+				      	"positionScale": 1.8
+				    },
+				    {
+				    	"id": "plane4",
+				      	"svgPath": planeSVG,
+				      	"positionOnLine": 0,
+				      	"color": "#585869",
+				      	"longitude": -500,
+				      	"latitude": -500,
+				      	"flipDirection": true,
+				      	"loop": true,
+				      	"scale": 0.03,
+				      	"positionScale": 1.8
+				    }
+				],
+			},
+			/** 
+			* create areas settings
+			* autoZoom set to true means that the map will zoom-in when clicked on the area
+			* selectedColor indicates color of the clicked area.
+			*/
+			areasSettings: {
+                unlistedAreasColor: "#8dd9ef",
+                "autoZoom": true,
+				"selectedColor": "#CC0000"
+            },
+			"linesSettings": {
+		    	"color": "#0782AB",
+		    	"alpha": 0.4
+		  	},
+		  	imagesSettings: {
+				rollOverColor: "#CC0000",
+				selectedColor: "#000000",
+				"pauseDuration": 0.2,
+		    	"animationDuration": 2.5,
+		    	"adjustAnimationSpeed": true
+			},
+			linesSettings: {
+				color: "#CC0000",
+				alpha: 0.4
+			},
+			/**
+			* let's say we want a small map to be displayed, so let's create it
+			*/
+			"smallMap": {},
+
+			"listeners": [{
+		    	"event": "init",
+		    	"method": function(e) {
+			      	// get map object
+			      	var map = e.chart;
+			      	// start first plane immediately
+			      	var plane1 = map.getObjectById( "plane1" );
+			      	plane1.lineId = "line1";
+			      	plane1.animateAlong();
+
+			      	// delay the second plane by 1 second
+				    setTimeout( function() {
+				    	var plane2 = map.getObjectById( "plane2" );
+				        plane2.lineId = "line2";
+				        plane2.animateAlong();
+				    }, 1000 );
+
+				    // and the third one by 2 seconds
+				    setTimeout( function() {
+				        var plane3 = map.getObjectById( "plane3" );
+				        plane3.lineId = "line3";
+				        plane3.animateAlong();
+				    }, 2000 );
+
+					setTimeout( function() {
+				        var plane4 = map.getObjectById( "plane4" );
+				        plane4.lineId = "line4";
+				        plane4.animateAlong();
+				    }, 3000 );				    
+		    	}
+			}]
+		});
+	</script>
+	<style type="text/css">
+		#chartdiv {
+		  width: 100%;
+		  height: 700px;
+		}
+	</style>
+</head>
+<body>
+	<div id="chartdiv"></div> 
+</body>
+</html>
